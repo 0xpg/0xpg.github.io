@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            background: #000000;
             min-height: 100vh;
             color: #ffffff;
             display: flex;
@@ -34,18 +34,20 @@
         }
 
         .avatar {
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0 auto 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            font-weight: 700;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
             animation: float 6s ease-in-out infinite;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         @keyframes float {
@@ -57,15 +59,12 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #a8b2d1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
         }
 
         .title {
             font-size: 1.25rem;
-            color: #8892b0;
+            color: #666666;
             font-weight: 400;
             margin-bottom: 1.5rem;
             letter-spacing: 0.1em;
@@ -74,7 +73,7 @@
 
         .bio {
             font-size: 1.1rem;
-            color: #a8b2d1;
+            color: #888888;
             line-height: 1.8;
             margin-bottom: 2.5rem;
         }
@@ -92,20 +91,19 @@
             gap: 0.5rem;
             padding: 0.875rem 1.5rem;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             color: #ffffff;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
         }
 
         .link:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(102, 126, 234, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
         }
 
         .link svg {
@@ -113,8 +111,8 @@
             height: 20px;
         }
 
-        /* Background decoration */
-        .bg-decoration {
+        /* Subtle background glow */
+        .bg-glow {
             position: fixed;
             width: 100%;
             height: 100%;
@@ -124,32 +122,27 @@
             overflow: hidden;
         }
 
-        .circle {
+        .glow {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            filter: blur(100px);
+            opacity: 0.15;
         }
 
-        .circle-1 {
+        .glow-1 {
             width: 400px;
             height: 400px;
-            top: -200px;
+            background: #333333;
+            top: -100px;
             right: -100px;
         }
 
-        .circle-2 {
+        .glow-2 {
             width: 300px;
             height: 300px;
-            bottom: -150px;
+            background: #222222;
+            bottom: -100px;
             left: -100px;
-        }
-
-        .circle-3 {
-            width: 200px;
-            height: 200px;
-            top: 50%;
-            left: 10%;
-            opacity: 0.5;
         }
 
         @media (max-width: 600px) {
@@ -162,9 +155,8 @@
             }
 
             .avatar {
-                width: 100px;
-                height: 100px;
-                font-size: 2.5rem;
+                width: 120px;
+                height: 120px;
             }
 
             .links {
@@ -174,21 +166,31 @@
     </style>
 </head>
 <body>
-    <div class="bg-decoration">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="circle circle-3"></div>
+    <div class="bg-glow">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
     </div>
 
     <div class="container">
-        <div class="avatar">P</div>
+        <div class="avatar">
+            <img src="https://pbs.twimg.com/profile_images/1580734728870727680/xKLxpCIS_400x400.jpg" alt="Pratik">
+        </div>
         <h1>Pratik</h1>
-        <p class="title">Marketer</p>
+        <p class="title">AI x Crypto</p>
         <p class="bio">
             Accelerating AI x Crypto @ Eigen Labs | Investing @ Social Graph Ventures
         </p>
 
         <div class="links">
+            <a href="https://0xpratik.com/" class="link" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    <path d="M2 2l7.586 7.586"></path>
+                    <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+                Blog
+            </a>
             <a href="https://github.com/0xpg" class="link" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
